@@ -4,31 +4,39 @@ import "./Calculator.css"; // Link the CSS file
 
 
 const Calculator = () => {
-    // Setting up state for the display
+    // Set up State to manage display value
   const [display, setDisplay] = useState("");
 
 
 
-  // Button values for the calculator
+  // Array of buttons to be dynamically rendered
   const buttons = [
-    "7", "8", "9", "/",
+    "C","7", "8", "9", "/",
     "4", "5", "6", "*",
     "1", "2", "3", "-",
     "0", ".", "=", "+"
   ];
 
-  const handleButtonClick = (value) => {
-    if (value === "=") {
-      try {
-        setDisplay(eval(display)); //Evaluate the math expression in display
-      } catch {
-            setDisplay("Error"); //Handle invalid input
-      }
-    } else {
-        setDisplay(display + value);
-    }
+  // Function to handle button clicks
+ const handleButtonClick = (value) => {
 
+    if (value ==="=") {
+      try {
+  //Use eval() to evaluate the expressions & .string() to ensure the result is properly formatted
+        setDisplay(eval(display).toString());
+      } catch {
+        //Display error if invalid input
+          setDisplay("Error");        
+      }
+        // Resets the display if 'C' is pressed
+    }   else if(value ==="C") {
+           setDisplay("0")    
+
+  }       else {
+    // Append the clicked value to the display
+      setDisplay(display === "0" ? value : display + value)
   }
+ }
 
   return (
     <div className="calculator">
@@ -39,7 +47,10 @@ const Calculator = () => {
             {/* React requires each child in the array to have a unique key which is why we use Index */}
             {buttons.map((value, index) => (     //handles button click
               <button key={index} onClick={() => handleButtonClick(value)}
-                className={value === "0" ? "button-zero" : "button"}
+              // Class styles given to these buttons when pressed
+                className={value ==="0" ? "button-zero" : 
+                            value === "C" ? "button-clear" : 
+                              value === "=" ? "button-equal" : "button"}
               >
                 {value}
               </button>

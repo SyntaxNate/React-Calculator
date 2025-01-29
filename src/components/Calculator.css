@@ -1,52 +1,82 @@
+/* Calculator Container */
 .calculator {
   width: 300px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #333;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  color: #fff;
+  background-color: #222;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
+/* Display Screen */
 .display {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: white;
   font-size: 2em;
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #222;
-  color: #fff;
-  border-radius: 5px;
   text-align: right;
-  overflow-x: auto;
-  white-space: nowrap;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
+/* Grid Layout for Buttons */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
-button {
+/* General Button Styling */
+.button {
+  width: 100%;
+  height: 60px;
   font-size: 1.5em;
-  padding: 15px;
-  background-color: #444;
-  color: #fff;
   border: none;
   border-radius: 5px;
+  background-color: #444;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: 0.2s;
 }
 
-button:hover {
+.button:hover {
   background-color: #555;
 }
 
-button:active {
+/* Button Zero - Takes Up Two Columns */
+.button-zero {
+  grid-column: span 2; /* Makes the '0' button wider */
   background-color: #666;
-  transform: scale(0.95);
 }
 
-button.zero {
-  grid-column: span 2;
+.button-zero:hover {
+  background-color: #777;
+}
+
+/* Equals Button */
+.button-equal {
+  background-color: #f39c12;
+  color: white;
+  font-weight: bold;
+}
+
+.button-equal:hover {
+  background-color: #e67e22;
+}
+
+/* Clear Button */
+.button-clear {
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+}
+
+.button-clear:hover {
+  background-color: #c0392b;
 }
